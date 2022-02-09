@@ -31,7 +31,7 @@ app.get("/api", (req, res) => {
 app.get("/api/:date", (req, res) => {
   let date = req.params.date; //set date to e equals to req params
 
-  if (date.includes("-")) {
+  if (!!Date.parse(date)) {
     // check if date is a valid date string
     timeObj = {
       unix: new Date(date).getTime(),
