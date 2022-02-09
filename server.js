@@ -20,7 +20,7 @@ app.get("/api/hello", function (req, res) {
 });
 
 let timeObj = {};
-app.get("/api/timestamp", (req, res) => {
+app.get("/api", (req, res) => {
   // timeObj["unix"] = new Date().getTime();
   // timeObj["utc"] = new Date().toUTCString();
   timeObj = { unix: new Date().getTime(), utc: new Date().toUTCString() };
@@ -28,28 +28,28 @@ app.get("/api/timestamp", (req, res) => {
   res.json(timeObj);
 });
 
-app.get("/api/timestamp/:input", (req, res) => {
-  let input = req.params.input; //set input to e equals to req params
+app.get("/api/:date", (req, res) => {
+  let date = req.params.date; //set date to e equals to req params
 
-  if (input.includes("-")) {
-    // check if input is a valid date string
+  if (date.includes("-")) {
+    // check if date is a valid date string
     timeObj = {
-      unix: new Date(input).getTime(),
-      utc: new Date(input).toUTCString(),
+      unix: new Date(date).getTime(),
+      utc: new Date(date).toUTCString(),
     };
   } else {
-    input = parseInt(input); // parse string to number
+    date = parseInt(date); // parse string to number
 
     timeObj = {
-      unix: new Date(input).getTime(),
-      utc: new Date(input).toUTCString(),
+      unix: new Date(date).getTime(),
+      utc: new Date(date).toUTCString(),
     };
   }
 
-  // if (!timeObj["unix"] || !timeObj["utc"]) {
-  //   // use bracket notation check date validity
-  //   res.json({ error: "Invalid Date" });
-  // }
+  if (!timeObj["unix"] || !timeObj["utc"]) {
+    // use bracket notation check date validity
+    res.json({ error: "Invalid Date" });
+  }
   res.json(timeObj);
 });
 
