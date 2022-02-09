@@ -1,0 +1,28 @@
+{
+  "name": "timestamp-microservice-api",
+  "version": "1.0.0",
+  "description": "A timestamp microservice api",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": " nodemon server.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "API",
+    "timestamp",
+    "microservice",
+    "freecodecamp"
+  ],
+  "author": "Tony Edgal",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2"
+  }
+}
